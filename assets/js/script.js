@@ -141,31 +141,28 @@ const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
 // add event to all nav link
-navigationLinks.forEach((link, index) => {
-  link.addEventListener("click", function () {
-    
+for (let navIndex = 0; navIndex < navigationLinks.length; navIndex++) {
+  navigationLinks[navIndex].addEventListener("click", function () {
+
     let pageToCheck = this.innerHTML.toLowerCase();
     
-    // Handle special cases for navbar text mapping
-    if (pageToCheck === "password generator") {
-      pageToCheck = "blog";
-    } else if (pageToCheck === "pwned") {
-      pageToCheck = "portfolio";
-    }
-    
-    pages.forEach((page, pageIndex) => {
-      if (pageToCheck === page.dataset.page) {
-        page.classList.add("active");
-        navigationLinks[index].classList.add("active");
+    // Handle special text mapping
+    if (pageToCheck === "password generator") pageToCheck = "blog";
+    if (pageToCheck === "pwned") pageToCheck = "portfolio";
+
+    for (let pageIndex = 0; pageIndex < pages.length; pageIndex++) {
+      if (pageToCheck === pages[pageIndex].dataset.page) {
+        pages[pageIndex].classList.add("active");
+        navigationLinks[navIndex].classList.add("active");
         window.scrollTo(0, 0);
       } else {
-        page.classList.remove("active");
+        pages[pageIndex].classList.remove("active");
         navigationLinks[pageIndex].classList.remove("active");
       }
-    });
-    
+    }
+
   });
-});
+}
 
 /*-----------------------------------*\
   #PASSWORD GENERATOR
