@@ -144,7 +144,7 @@ const pages = document.querySelectorAll("[data-page]");
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
 
-    for (let i = 0; i < pages.length; i++) {
+    for (let j = 0; j < pages.length; j++) {
       // Handle special cases for navbar text mapping
       let pageToCheck = this.innerHTML.toLowerCase();
       
@@ -154,13 +154,13 @@ for (let i = 0; i < navigationLinks.length; i++) {
         pageToCheck = "portfolio";
       }
       
-      if (pageToCheck === pages[i].dataset.page) {
-        pages[i].classList.add("active");
+      if (pageToCheck === pages[j].dataset.page) {
+        pages[j].classList.add("active");
         navigationLinks[i].classList.add("active");
         window.scrollTo(0, 0);
       } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+        pages[j].classList.remove("active");
+        navigationLinks[j].classList.remove("active");
       }
     }
 
