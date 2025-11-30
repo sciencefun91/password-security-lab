@@ -145,10 +145,13 @@ for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
 
     for (let i = 0; i < pages.length; i++) {
-      // Replace button "Blog" template with "Password Generator" (a trace for me)
+      // Handle special cases for navbar text mapping
       let pageToCheck = this.innerHTML.toLowerCase();
+      
       if (pageToCheck === "password generator") {
         pageToCheck = "blog";
+      } else if (pageToCheck === "pwned") {
+        pageToCheck = "portfolio";
       }
       
       if (pageToCheck === pages[i].dataset.page) {
