@@ -141,23 +141,17 @@ const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
 // add event to all nav link
-for (let navIndex = 0; navIndex < navigationLinks.length; navIndex++) {
-  navigationLinks[navIndex].addEventListener("click", function () {
+for (let i = 0; i < navigationLinks.length; i++) {
+  navigationLinks[i].addEventListener("click", function () {
 
-    let pageToCheck = this.innerHTML.toLowerCase();
-    
-    // Handle special text mapping
-    if (pageToCheck === "password generator") pageToCheck = "blog";
-    if (pageToCheck === "pwned") pageToCheck = "portfolio";
-
-    for (let pageIndex = 0; pageIndex < pages.length; pageIndex++) {
-      if (pageToCheck === pages[pageIndex].dataset.page) {
-        pages[pageIndex].classList.add("active");
-        navigationLinks[navIndex].classList.add("active");
+    for (let i = 0; i < pages.length; i++) {
+      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
+        pages[i].classList.add("active");
+        navigationLinks[i].classList.add("active");
         window.scrollTo(0, 0);
       } else {
-        pages[pageIndex].classList.remove("active");
-        navigationLinks[pageIndex].classList.remove("active");
+        pages[i].classList.remove("active");
+        navigationLinks[i].classList.remove("active");
       }
     }
 
