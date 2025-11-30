@@ -1041,11 +1041,11 @@ main {
 .intro-text {
   text-align: center;
   margin-bottom: 30px;
-  color: var(--light-gray); /* 👈 AGGIUNGI QUESTA LINEA */
+  color: var(--light-gray);
 }
 
 .intro-text strong {
-  color: var(--white-2); /* 👈 PER IL TESTO IN GRASSETTO */
+  color: var(--white-2);
 }
 
 .tool-card {
@@ -1056,8 +1056,8 @@ main {
   max-width: 500px;
   margin: 0 auto;
   z-index: 1;
-  position: relative; /* 👈 AGGIUNGI */
-  color: var(--light-gray); /* 👈 AGGIUNGI */
+  position: relative;
+  color: var(--light-gray);
 }
 
 .tool-card::before {
@@ -1077,7 +1077,8 @@ main {
 }
 
 .password-options label {
-  color: var(--light-gray); /* 👈 AGGIUNGI */
+  color: var(--light-gray);
+  font-size: var(--fs-6);
 }
 
 .password-select {
@@ -1085,21 +1086,34 @@ main {
   border: 1px solid var(--jet);
   border-radius: 8px;
   background: var(--eerie-black-1);
-  color: var(--white-2); /* 👈 AGGIUNGI */
+  color: var(--white-2);
   font-size: var(--fs-6);
 }
 
-/* 👇 AGGIUNGI QUESTE REGOLE PER GLI ALTRI ELEMENTI */
 .length-container {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
+.length-slider {
+  flex: 1;
+  background: var(--jet);
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+}
+
 #length-value {
   min-width: 100px;
   font-weight: var(--fw-500);
-  color: var(--white-2); /* 👈 AGGIUNGI */
+  color: var(--white-2);
+}
+
+.password-display {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .password-field {
@@ -1109,8 +1123,48 @@ main {
   border-radius: 8px;
   background: var(--eerie-black-1);
   font-family: monospace;
-  color: var(--white-2); /* 👈 AGGIUNGI */
+  color: var(--white-2);
   font-size: var(--fs-6);
+}
+
+.copy-btn, .generate-btn {
+  background: var(--border-gradient-onyx);
+  color: var(--orange-yellow-crayola);
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition-1);
+  font-size: var(--fs-6);
+  z-index: 1;
+  position: relative;
+  font-weight: var(--fw-500);
+}
+
+.copy-btn::before, .generate-btn::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+  transition: var(--transition-1);
+}
+
+.copy-btn:hover, .generate-btn:hover {
+  background: var(--bg-gradient-yellow-1);
+  color: var(--smoky-black);
+}
+
+.copy-btn:hover::before, .generate-btn:hover::before {
+  background: var(--bg-gradient-yellow-2);
+}
+
+.generate-btn {
+  width: 100%;
+  font-size: var(--fs-5);
+  font-weight: var(--fw-500);
+  margin-top: 15px;
 }
 
 
