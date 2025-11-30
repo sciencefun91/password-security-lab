@@ -1034,7 +1034,6 @@ main {
   #PASSWORD GENERATOR
 \*-----------------------------------*/
 
-/* Password Generator Styles */
 .password-generator {
   padding: 20px 0;
 }
@@ -1042,7 +1041,11 @@ main {
 .intro-text {
   text-align: center;
   margin-bottom: 30px;
-  color: var(--text-color);
+  color: var(--light-gray); /* 👈 AGGIUNGI QUESTA LINEA */
+}
+
+.intro-text strong {
+  color: var(--white-2); /* 👈 PER IL TESTO IN GRASSETTO */
 }
 
 .tool-card {
@@ -1053,6 +1056,8 @@ main {
   max-width: 500px;
   margin: 0 auto;
   z-index: 1;
+  position: relative; /* 👈 AGGIUNGI */
+  color: var(--light-gray); /* 👈 AGGIUNGI */
 }
 
 .tool-card::before {
@@ -1071,39 +1076,30 @@ main {
   margin-bottom: 25px;
 }
 
+.password-options label {
+  color: var(--light-gray); /* 👈 AGGIUNGI */
+}
+
 .password-select {
   padding: 12px;
   border: 1px solid var(--jet);
   border-radius: 8px;
   background: var(--eerie-black-1);
-  color: var(--white-2);
+  color: var(--white-2); /* 👈 AGGIUNGI */
   font-size: var(--fs-6);
 }
 
+/* 👇 AGGIUNGI QUESTE REGOLE PER GLI ALTRI ELEMENTI */
 .length-container {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-.length-slider {
-  flex: 1;
-  background: var(--jet);
-  height: 6px;
-  border-radius: 3px;
-  outline: none;
-}
-
 #length-value {
   min-width: 100px;
   font-weight: var(--fw-500);
-  color: var(--white-2);
-}
-
-.password-display {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  color: var(--white-2); /* 👈 AGGIUNGI */
 }
 
 .password-field {
@@ -1113,47 +1109,9 @@ main {
   border-radius: 8px;
   background: var(--eerie-black-1);
   font-family: monospace;
-  color: var(--white-2);
+  color: var(--white-2); /* 👈 AGGIUNGI */
   font-size: var(--fs-6);
 }
-
-.copy-btn, .generate-btn {
-  background: var(--border-gradient-onyx);
-  color: var(--orange-yellow-crayola);
-  border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: var(--transition-1);
-  font-size: var(--fs-6);
-  z-index: 1;
-  position: relative;
-}
-
-.copy-btn::before, .generate-btn::before {
-  content: "";
-  position: absolute;
-  inset: 1px;
-  background: var(--bg-gradient-jet);
-  border-radius: inherit;
-  z-index: -1;
-  transition: var(--transition-1);
-}
-
-.copy-btn:hover, .generate-btn:hover {
-  background: var(--bg-gradient-yellow-1);
-}
-
-.copy-btn:hover::before, .generate-btn:hover::before {
-  background: var(--bg-gradient-yellow-2);
-}
-
-.generate-btn {
-  width: 100%;
-  font-size: var(--fs-5);
-  font-weight: var(--fw-500);
-}
-
 
 
 
