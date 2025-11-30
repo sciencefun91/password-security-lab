@@ -157,3 +157,101 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+/*-----------------------------------*\
+  #PASSWORD GENERATOR
+\*-----------------------------------*/
+
+// Password Generator Functions
+function generatePassword() {
+    const length = parseInt(document.getElementById('password-length').value);
+    const type = document.getElementById('password-type').value;
+    
+    let password = '';
+    
+    switch(type) {
+        case 'memorable':
+            password = generateMemorablePassword(length);
+            break;
+        case 'letters-numbers':
+            password = generateLettersNumbersPassword(length);
+            break;
+        case 'random':
+            password = generateRandomPassword(length);
+            break;
+        case 'numbers':
+            password = generateNumbersPassword(length);
+            break;
+    }
+    
+    document.getElementById('generated-password').value = password;
+}
+
+function generateMemorablePassword(length) {
+    const words = ['apple', 'river', 'sunset', 'mountain', 'ocean', 'forest', 'star', 'cloud', 'bird', 'flower'];
+    const numbers = '0123456789';
+    let password = '';
+    
+    while (password.length < length) {
+        const word = words[Math.floor(Math.random() * words.length)];
+        const number = numbers[Math.floor(Math.random() * numbers.length)];
+        
+        if (password.length + word.length + 1 <= length) {
+            password += word + number;
+        } else {
+            break;
+        }
+    }
+    
+    // Fill remaining characters if any
+    while (password.length < length) {
+        password += numbers[Math.floor(Math.random() * numbers.length)];
+    }
+    
+    return password.slice(0, length);
+}
+
+function generateLettersNumbersPassword(length) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let password = '';
+    
+    for (let i = 0; i < length; i++) {
+        password += chars[Math.floor(Math.random() * chars.length)];
+    }
+    
+    return password;
+}
+
+function generateRandomPassword(length) {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
+    let password = '';
+    
+    for (let i = 0; i < length; i++) {
+        password += chars[Math.floor(Math.random() * chars.length)];
+    }
+    
+    return password;
+}
+
+function generateNumbersPassword(length) {
+    const numbers = '0123456789';
+    let password = '';
+    
+    for (let i = 0; i < length; i++) {
+        password += numbers[Math.floor(Math.random() * numbers.length)];
+    }
+    
+    return password;
+}
+
+function copyPassword() {
+    const passwordField = document.getElementById('generated-password');
+    passwordField.select();
+    document.execCommand('copy');
+    alert('Password copied to clipboard!');
+}
+
+// Update length value display
+document.getElementById('password-length').addEventListener('input', function() {
+    document.getElementById('length-value').textContent = this.value + ' characters';
+});
