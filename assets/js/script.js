@@ -141,31 +141,31 @@ const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
 // add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-
-    for (let j = 0; j < pages.length; j++) {
-      // Handle special cases for navbar text mapping
-      let pageToCheck = this.innerHTML.toLowerCase();
-      
-      if (pageToCheck === "password generator") {
-        pageToCheck = "blog";
-      } else if (pageToCheck === "pwned") {
-        pageToCheck = "portfolio";
-      }
-      
-      if (pageToCheck === pages[j].dataset.page) {
-        pages[j].classList.add("active");
-        navigationLinks[i].classList.add("active");
+navigationLinks.forEach((link, index) => {
+  link.addEventListener("click", function () {
+    
+    let pageToCheck = this.innerHTML.toLowerCase();
+    
+    // Handle special cases for navbar text mapping
+    if (pageToCheck === "password generator") {
+      pageToCheck = "blog";
+    } else if (pageToCheck === "pwned") {
+      pageToCheck = "portfolio";
+    }
+    
+    pages.forEach((page, pageIndex) => {
+      if (pageToCheck === page.dataset.page) {
+        page.classList.add("active");
+        navigationLinks[index].classList.add("active");
         window.scrollTo(0, 0);
       } else {
-        pages[j].classList.remove("active");
-        navigationLinks[j].classList.remove("active");
+        page.classList.remove("active");
+        navigationLinks[pageIndex].classList.remove("active");
       }
-    }
-
+    });
+    
   });
-}
+});
 
 /*-----------------------------------*\
   #PASSWORD GENERATOR
