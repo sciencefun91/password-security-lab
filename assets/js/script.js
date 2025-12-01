@@ -1,6 +1,13 @@
 'use strict';
 
+// All'inizio del file
+alert("JavaScript caricato!");
 
+// Nella navigation
+navigationLinks[i].addEventListener("click", function () {
+    alert("Click rilevato!");
+    // ... resto del codice
+});
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
