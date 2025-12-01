@@ -155,20 +155,21 @@ const pages = document.querySelectorAll("[data-page]");
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
 
-    for (let i = 0; i < pages.length; i++) {
-      // Gestione speciale per "Password Generator" che corrisponde alla pagina "blog"
+    for (let j = 0; j < pages.length; j++) {
       let pageToCheck = this.innerHTML.toLowerCase();
-      if (pageToCheck === "password generator") {
-        pageToCheck = "blog";
-      }
       
-      if (pageToCheck === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
+      // RIMUOVI questa parte problematic:
+      // if (pageToCheck === "password generator") {
+      //   pageToCheck = "blog";
+      // }
+      
+      if (pageToCheck === pages[j].dataset.page) {
+        pages[j].classList.add("active");
+        navigationLinks[j].classList.add("active");
         window.scrollTo(0, 0);
       } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+        pages[j].classList.remove("active");
+        navigationLinks[j].classList.remove("active");
       }
     }
 
